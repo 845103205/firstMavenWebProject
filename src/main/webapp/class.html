@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .bg{
+        background-color: red;
+    }
+</style>
+<body>
+<div id="tab">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+</div>
+<div>
+    <span>添加</span>
+    <span id="add">+</span>
+</div>
+
+</body>
+</html>
+<script>
+    var that;
+    class myclass {
+        constructor(id) {
+            this.main=document.querySelector(id);
+           this.lis= this.main.querySelectorAll('li');
+           this.add=document.querySelector("#add");
+           this.addli=this.main;
+           this.init();
+           that=this;
+        }
+        init(){
+            for(var i=0;i<this.lis.length;i++){
+                this.lis[i].index=i;
+                this.lis[i].onclick=this.toggleDom;
+            }
+            this.add.onclick=this.addDom;
+        }
+         /*变色*/
+        toggleDom(){
+            if(this.className==='bg'){
+                this.className='';
+            }else {
+                this.className='bg';
+            }
+        }
+        //添加
+        addDom(){
+            var html='<li>4</li>';
+           // that.add.insertAdjacentHTML('beforeend',html);
+            that.addli.insertAdjacentHTML('beforeend',html);
+        }
+    }
+   class son extends myclass{
+        constructor(id) {
+            super(id);
+        }
+   }
+   new son("#tab");
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .bg{
+        background-color: red;
+    }
+</style>
+<body>
+<div id="tab">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+</div>
+<div>
+    <span>添加</span>
+    <span id="add">+</span>
+</div>
+
+</body>
+</html>
+<script>
+    /**
+     * 原型方法
+     * @type {string}
+     */
+    let name="zhangsan";
+    function People(name)
+    {
+        this.name=name;
+        //对象方法
+        this.Introduce=function(){
+            alert("My name is "+this.name);
+        }
+    }
+    //类方法
+    People.Run=function(){
+        alert("I can run");
+    }
+    //原型方法
+    People.prototype.IntroduceChinese=function(){
+        this.name="zhangsan";
+        alert("我的名字是"+this.name);
+    };
+
+
+
+
+    //测试
+
+    var p1=new People("Windking");
+
+    p1.Introduce();
+
+    People.Run();
+
+    p1.IntroduceChinese();
+
+    p1.Introduce();
+
+
+</script>

@@ -1,0 +1,49 @@
+
+div {
+    width: 100px;
+    height: 100px;
+    color: rgb(255,0,0);
+    background-color: #00ff00;
+}
+
+div{
+    border: 1px solid black;
+}
+
+div#p1{
+    font-size: 60px;
+}
+
+#p2{
+
+    color:#0000ff;
+}
+
+#p3{
+    color:#f00;
+}
+
+
+
+/*
+颜色
+rgb色彩模式：
+R 红色
+G 绿色
+B 蓝色
+
+选择器
+1基本选择器
+通配符选择器
+标签选择器
+id选择器
+class选择器
+
+id ->唯一性 -》人的身份证
+
+
+2组合
+3属性
+4伪元素
+
+*/

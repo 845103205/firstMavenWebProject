@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="calculator"  class="likou.aop.Calculator"/>
+    <bean id="aopaspects" class="likou.aop.LogAspects"/>
+
+    <aop:config>
+        <aop:aspect ref="aopaspects">
+            <aop:pointcut id="log" expression="execution(* *.*(..))"/>
+
+            <aop:before method="logStart" pointcut-ref="log"/>
+            <aop:after method="logEnd" pointcut-ref="log"/>
+
+            <aop:after-returning returning="result" method="logReturn" pointcut-ref="log"/>
+            <aop:after-throwing throwing="exception" method="logException" pointcut-ref="log"/>
+        </aop:aspect>
+
+    </aop:config>
+    <!--配置aop
+    <aop:config>
+        &lt;!&ndash;配置通用切入点表达式&ndash;&gt;
+        <aop:pointcut id="pt1" expression="execution(* com.itheima.service.impl.*.*(..))"></aop:pointcut>
+        <aop:aspect id="txAdvice" ref="txManager">
+            &lt;!&ndash;配置前置通知：开启事务&ndash;&gt;
+            <aop:before method="beginTransaction" pointcut-ref="pt1"></aop:before>
+            &lt;!&ndash;配置后置通知：提交事务&ndash;&gt;
+            <aop:after-returning method="commit" pointcut-ref="pt1"></aop:after-returning>
+            &lt;!&ndash;配置异常通知：回滚事务&ndash;&gt;
+            <aop:after-throwing method="rollback" pointcut-ref="pt1"></aop:after-throwing>
+            &lt;!&ndash;配置最终通知：释放连接&ndash;&gt;
+            <aop:after method="release" pointcut-ref="pt1"></aop:after>
+        </aop:aspect>
+    </aop:config>-->
+</beans>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    #alert_box { position: absolute; left: 50%; top: 50%; width: 400px; height: 200px; display:none;}
+    #alert_box dl { position: absolute; left: -200px; top: -100px; width: 400px; height: 200px; border: solid 1px #999; border-radius: 8px; overflow: hidden; }
+    #alert_box dt { background-color: #ccc; height: 30px; text-align: center; line-height: 30px; font-weight: bold; font-size: 15px; }
+    #alert_box dd { padding: 6px; margin: 0; font-size: 12px; }
+</style>
+<body>
+<marquee width=400 behavior=alternate direction=left align=middle>弹来弹去跑马灯!</marquee>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script type="text/javascript">
+    var Pro = function (time) {
+        //返回一个Promise对象
+        return new Promise(function (resolve, reject,aaa) {
+            //模拟接口调用
+
+                //这里告诉Promise 成功了，然后去执行then方法的第一个函数
+                //resolve('成功返回');
+                axios.get('https://yesno.wtf/api')
+                    .then(function (response) {
+                        resolve( _.capitalize(response.data.answer))
+                    })
+                    .catch(function (error) {
+
+                    })
+
+        })
+    };
+    (function(){
+        Pro(3000)
+            .then(function(data){
+                console.log(data);
+                return Pro(5000);})
+            .then(function(data){
+                console.log(data);
+                console.log('end');
+            })
+    })();
+
+</script>

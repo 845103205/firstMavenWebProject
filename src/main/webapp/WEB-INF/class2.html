@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>若水demo</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+<div class="video_in">
+    <p>
+        下拉一
+        <select name="B1other1_1" id='B1other1_1' class="select">
+            <option value='0'>请选择</option>
+            <option value='1'>选择1</option>
+            <option value='2' selected>选择2</option>
+            <option value='3'>选择3</option>
+            <option value='4'>选择4</option>
+        </select>
+    </p>
+    <p>
+        下拉二
+        <select name="B1other2_1" id='B1other2_1' class="select">
+            <option value='0'>请选择</option>
+            <option value='1'>选择1</option>
+            <option value='2'>选择2</option>
+            <option value='3' selected>选择3</option>
+            <option value='4'>选择4</option>
+        </select>
+    </p>
+    <p>
+        下拉三
+        <select name="B1other3_1" id='B1other3_1' class="select">
+            <option value='0'>请选择</option>
+            <option value='1'>选择1</option>
+            <option value='2'>选择2</option>
+            <option value='3'>选择3</option>
+            <option value='4' selected>选择4</option>
+        </select>
+    </p>
+    <p>
+        下拉五
+        <select name="B1other4_1" id='B1other4_1' class="select">
+            <option value='0'>请选择</option>
+            <option value='1'>选择1</option>
+            <option value='2'>选择2</option>
+            <option value='3'>选择3</option>
+            <option value='4'>选择4</option>
+        </select>
+    </p>
+    <p>
+        下拉六
+        <select name="B1other5_1" id='B1other5_1' class="select">
+            <option value='0'>请选择</option>
+            <option value='1'>选择1</option>
+            <option value='2'>选择2</option>
+            <option value='3'>选择3</option>
+            <option value='4'>选择4</option>
+        </select>
+    </p>
+</div>
+
+<script>
+    let a={};
+    a.push({a:1,b:2})
+    a.push({a:2,b:3})
+    console.log(a)
+
+
+    $(function(){
+        var oldVal="";
+        $('.video_in select').each(function() {
+            if ($(this).find("option:selected")) {
+                var _thisVal = $(this).find('option:selected').val();
+                oldVal=$(this).attr("old",_thisVal)
+                $('.video_in select').parent().siblings("p").find("option[value="+_thisVal+"]").not("option[value=0]").hide()
+            }
+        });
+
+        $(".video_in select").change(function(){
+            oldVal=$(this).attr("old");
+            var _thisVal=$(this).find('option:selected').val();
+            var id=$(this).attr("id");
+            $(this).parent().siblings("p").find("option[value="+_thisVal+"]").not("option[value=0]").hide();
+            $(this).parent().siblings("p").find("option[value="+oldVal+"]").show();
+            $(this).find("option[value="+oldVal+"]").show();
+            $(this).attr("old",_thisVal)
+        })
+    })
+    </script>
+</body>
+</html>

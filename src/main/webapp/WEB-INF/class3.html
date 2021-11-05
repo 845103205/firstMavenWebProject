@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    #alert_box { position: absolute; left: 50%; top: 50%; width: 400px; height: 200px; display:none;}
+    #alert_box dl { position: absolute; left: -200px; top: -100px; width: 400px; height: 200px; border: solid 1px #999; border-radius: 8px; overflow: hidden; }
+    #alert_box dt { background-color: #ccc; height: 30px; text-align: center; line-height: 30px; font-weight: bold; font-size: 15px; }
+    #alert_box dd { padding: 6px; margin: 0; font-size: 12px; }
+</style>
+<body>
+<div id="app">
+    <input type="text" id="txt">
+    <p id="show"></p>
+</div>
+</body>
+<script type="text/javascript">
+    var obj = {}
+    Object.defineProperty(obj, 'txt', {
+        get: function () {
+            console.log("get")
+            return obj
+        },
+        set: function (newValue) {
+            console.log("set")
+            document.getElementById('txt').value = newValue
+            document.getElementById('show').innerHTML = newValue
+        }
+    })
+
+</script>
