@@ -1,4 +1,4 @@
-package likou.threadlocaldemo;
+package likou.threadlocaldemo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,16 +16,13 @@ public class statController {
         set.add(val);
     }
 
-    static ThreadLocal<Val<Integer>> threadLocal = new ThreadLocal<Val<Integer>>() {
-        @Override
-        protected Val<Integer> initialValue() {
-            Val<Integer> val = new Val<>();
-            val.setT(0);
-            //向set中插入元素可能會引发线程安全问题。
-            addSet(val);
-            return val;
-        }
-    };
+    static ThreadLocal<Val<Integer>> threadLocal = ThreadLocal.withInitial(() -> {
+        Val<Integer> val = new Val<>();
+        val.setT(0);
+        //向set中插入元素可能會引发线程安全问题。
+        addSet(val);
+        return val;
+    });
 
     void _add() {
         try {

@@ -1,4 +1,4 @@
-package likou.threadlocaldemo;
+package likou.threadlocaldemo.controller;
 
 import likou.threadlocaldemo.ExportService.ExportService;
 import likou.threadlocaldemo.common.ImageToString;
