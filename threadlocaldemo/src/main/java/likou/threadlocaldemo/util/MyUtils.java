@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author tanjian
  * @date 2021/12/6 9:50
  */
-@Component
+
 public class MyUtils {
     public static String getCurrentProjectBasePath() {
         HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
